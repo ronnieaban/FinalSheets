@@ -1,10 +1,19 @@
+const CACHE_DURATION = 30; // Cache duration in seconds
+
 addEventListener('fetch', (event) => {
-  event.respondWith(handleRequest(event.request));
+  event.respondWith(handleRequest(event.request, event));
 });
 
-async function handleRequest(request) {
+async function handleRequest(request, event) {
+  // Check if the response is already in the cache
+  const cache = caches.default;
+  const cachedResponse = await cache.match(request.url);
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+
   // Ganti dengan kunci API Google Sheets API Anda
-  const apiKey = 'AIzaSyCfqFCbHNQtGjxld0GW4511ClYPzUgEdGc';
+  const apiKey = 'GOOGLE_API_KEY';
 
   // Ambil parameter dari URL query
   const url = new URL(request.url);
@@ -41,8 +50,14 @@ async function handleRequest(request) {
     return obj;
   });
 
+  // Simpan respons ke dalam cache dengan durasi CACHE_DURATION
+  const jsonHeaders = { 'Content-Type': 'application/json' };
+  const jsonResponse = new Response(JSON.stringify(jsonData), { headers: jsonHeaders });
+  event.waitUntil(cache.put(request.url, jsonResponse.clone()));
+  
+  // Atur header Cache-Control untuk memberikan informasi caching pada sisi browser
+  jsonResponse.headers.set('Cache-Control', `public, max-age=${CACHE_DURATION}`);
+
   // Kirim respons dengan data yang telah diambil
-  return new Response(JSON.stringify(jsonData), {
-    headers: { 'Content-Type': 'application/json' },
-  });
+  return jsonResponse;
 }
