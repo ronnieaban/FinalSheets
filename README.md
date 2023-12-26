@@ -23,7 +23,7 @@ Replace your-workers-subdomain.youraccount.workers.dev with your actual Cloudfla
 
 **How to Get API Key and Share Google Sheets:**
 1. Make Google API Key [Youtube](https://www.youtube.com/watch?v=brCkpzAD0gc)
-2. Share your google sheets [Youtube](https://www.youtube.com/watch?v=CNN967bemQg&t=256s) **File, SHare, Share with Others and at General Access** change Restricted to **Anyone with the link** 
+2. Share your google sheets [Youtube](https://www.youtube.com/watch?v=CNN967bemQg&t=256s) **File, Share, Share with Others and at General Access** change Restricted to **Anyone with the link** 
 
 **How to Deploy:**
 Put this code in the Cloudflare Worker, save and deploy 
