@@ -27,7 +27,7 @@ Replace your-workers-subdomain.youraccount.workers.dev with your actual Cloudfla
 1. Install Wrangler and configure it with your Cloudflare account.
 2. Run wrangler publish to deploy the script to Cloudflare Workers.
    
-    Important:
+**Important:**
  - Ensure that the Google Sheets API key is correctly set in the script.
  - Customize the script as needed, adjusting the API key, URL parameters, and response formatting according to your specific requirements.
 
