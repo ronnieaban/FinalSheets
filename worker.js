@@ -1,4 +1,4 @@
-const CACHE_DURATION = 30; // Cache duration in seconds
+const CACHE_DURATION = 5; // Cache duration in seconds
 
 addEventListener('fetch', (event) => {
   event.respondWith(handleRequest(event.request, event));
