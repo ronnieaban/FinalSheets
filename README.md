@@ -16,16 +16,17 @@ Replace your-workers-subdomain.youraccount.workers.dev with your actual Cloudfla
     https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan
 
 **Features:**
-
  - Utilizes the Google Sheets API to fetch data based on provided
    parameters.
  - Transforms the retrieved data into a standard JSON format.
  - Allows easy integration into web applications or services requiring dynamic data from Google Sheets.
 
-**How to Deploy:**
+**How to Get API Key and Share Google Sheets:**
+1. Make Google API Key
+2. Share your google sheets
 
-1. Install Wrangler and configure it with your Cloudflare account.
-2. Run wrangler publish to deploy the script to Cloudflare Workers.
+**How to Deploy:**
+Put this code in the Cloudflare Worker, save and deploy 
    
 **Important:**
  - Ensure that the Google Sheets API key is correctly set in the script.
