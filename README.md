@@ -1,5 +1,5 @@
 
-# sheetsJSON
+# FinalSheets
 Google Sheets API Fetcher using Cloudflare Workers
 
 This Cloudflare Workers script retrieves data from a Google Sheets spreadsheet using the Google Sheets API. The script accepts parameters such as spreadsheetId and sheetName through URL query parameters and fetches the corresponding data. The retrieved data is then transformed into a standard JSON format and returned as the HTTP response.
@@ -13,7 +13,7 @@ Replace your-workers-subdomain.youraccount.workers.dev with your actual Cloudfla
 
 *Example*
 
-    https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan
+    [https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan](https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan&filterColumn1=Home%20State&filterValue1=NY&filterColumn2=Major&filterValue2=Art)
 
 **Features:**
  - Utilizes the Google Sheets API to fetch data based on provided
