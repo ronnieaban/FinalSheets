@@ -7,7 +7,7 @@ This Cloudflare Workers script retrieves data from a Google Sheets spreadsheet u
 **Usage:**
 Deploy the Cloudflare Workers script using Wrangler or the Cloudflare dashboard. Access the endpoint with the necessary parameters in the URL query:
 
-    https://your-workers-subdomain.youraccount.workers.dev/?spreadsheetId=YOUR_SPREADSHEET_ID&sheetName=Sheet1
+    https://your-workers-subdomain.youraccount.workers.dev/?spreadsheetId=YOUR_SPREADSHEET_ID&sheetName=YOUR_SHEET_NAME&filterColumn1=ColumnName1&filterValue1=ValueToFilter1&filterColumn2=ColumnName2&filterValue2=ValueToFilter2
 
 Replace your-workers-subdomain.youraccount.workers.dev with your actual Cloudflare Workers subdomain.
 
