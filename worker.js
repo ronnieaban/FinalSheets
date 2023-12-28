@@ -1,11 +1,11 @@
-const CACHE_DURATION = 5; // Cache duration in seconds
+const CACHE_DURATION = 5; // Cache 5 detik
 
 addEventListener('fetch', (event) => {
   event.respondWith(handleRequest(event.request, event));
 });
 
 async function handleRequest(request, event) {
-  // Check if the response is already in the cache
+  // Check jika response suda ter-cache
   const cache = caches.default;
   const cachedResponse = await cache.match(request.url);
   if (cachedResponse) {
