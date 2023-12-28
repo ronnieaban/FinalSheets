@@ -22,7 +22,7 @@ async function handleRequest(request, event) {
 
   // Periksa apakah spreadsheetId dan sheetName tersedia
   if (!spreadsheetId || !sheetName) {
-    return new Response('Contoh https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan&filterColumn=Home%20State&filterValue=NY', { status: 400 });
+    return new Response('Contoh https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan', { status: 400 });
   }
 
   // URL untuk mengakses Google Sheets API
@@ -51,19 +51,25 @@ async function handleRequest(request, event) {
   });
 
   // Ambil parameter filter dari URL query
-  const filterColumn = url.searchParams.get('filterColumn');
-  const filterValue = url.searchParams.get('filterValue');
+  const filters = [];
+  for (const [key, value] of url.searchParams.entries()) {
+    if (key.startsWith('filterColumn') && value) {
+      const filterNumber = key.substring(12);
+      const filterColumn = value;
+      const filterValue = url.searchParams.get(`filterValue${filterNumber}`);
+      filters.push({ column: filterColumn, value: filterValue });
+    }
+  }
 
-  // Inisialisasi jsonHeaders di luar kondisi if
-  let jsonHeaders;
-
-  // Jika filterColumn dan filterValue ada, lakukan filtering
-  if (filterColumn && filterValue) {
-    // Filter data berdasarkan kolom dan nilai yang diberikan
-    const filteredData = jsonData.filter((row) => row[filterColumn] === filterValue);
+  // Jika ada filter, lakukan filtering
+  if (filters.length > 0) {
+    // Filter data berdasarkan filter yang diberikan
+    const filteredData = jsonData.filter((row) =>
+      filters.every((filter) => row[filter.column] === filter.value)
+    );
 
     // Buat respons JSON dari data yang telah difilter
-    jsonHeaders = { 'Content-Type': 'application/json' };
+    const jsonHeaders = { 'Content-Type': 'application/json' };
     const filteredJsonResponse = new Response(JSON.stringify(filteredData), { headers: jsonHeaders });
 
     // Set header Cache-Control untuk memberikan informasi caching pada sisi browser
@@ -73,8 +79,8 @@ async function handleRequest(request, event) {
     return filteredJsonResponse;
   }
 
-  // Jika tidak ada filterColumn dan filterValue, kirim respons dengan data asli
-  jsonHeaders = { 'Content-Type': 'application/json' };
+  // Jika tidak ada filter, kirim respons dengan data asli
+  const jsonHeaders = { 'Content-Type': 'application/json' };
   const jsonResponse = new Response(JSON.stringify(jsonData), { headers: jsonHeaders });
   event.waitUntil(cache.put(request.url, jsonResponse.clone()));
 
