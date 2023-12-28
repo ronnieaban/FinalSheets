@@ -13,7 +13,7 @@ Replace your-workers-subdomain.youraccount.workers.dev with your actual Cloudfla
 
 *Example*
 
-    [https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan](https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan&filterColumn1=Home%20State&filterValue1=NY&filterColumn2=Major&filterValue2=Art)
+    https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan&filterColumn1=Home%20State&filterValue1=NY&filterColumn2=Major&filterValue2=Art
 
 **Features:**
  - Utilizes the Google Sheets API to fetch data based on provided
