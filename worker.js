@@ -22,7 +22,7 @@ async function handleRequest(request, event) {
 
   // Periksa apakah spreadsheetId dan sheetName tersedia
   if (!spreadsheetId || !sheetName) {
-    return new Response('Contoh https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan', { status: 400 });
+    return new Response('Contoh https://api.ronnieaban.workers.dev/?spreadsheetId=1AhRiyMazpSLJBoJ7l32jyLQwZVdCkAJC6_UbL-mTxE8&sheetName=Kalimantan&filterColumn1=Home State&filterValue1=NY&filterColumn2=Major&filterValue2=Art', { status: 400 });
   }
 
   // URL untuk mengakses Google Sheets API
