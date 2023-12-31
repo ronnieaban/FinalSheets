@@ -1,5 +1,6 @@
+// CACHE WILL NOT WORK WITH *.pages.dev you need domain
 const CACHE_DURATION = 30; // Cache 30 detik
-
+ 
 addEventListener('fetch', (event) => {
   event.respondWith(handleRequest(event.request, event));
 });
